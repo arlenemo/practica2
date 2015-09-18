@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope.$ionicPopup,$timeout) {
+.controller('DashCtrl', function($scope,$ionicPopup, $timeout) {
     
     
     $scope.showAlert = function() {
