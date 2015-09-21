@@ -10,8 +10,15 @@ angular.module('starter.controllers', [])
      });
     }
      
-})
 
+
+$scope.guardar = function (persona) {
+    console.log("Nombre:" +persona.nombre);
+    console.log("Apellido:" +persona.apellido);
+    console.log("Email:" +persona.email);
+    console.log("Telefono:" +persona.telefono);
+}
+})
 
 .controller('ChatsCtrl', function($scope, Chats) {
   // With the new view caching in Ionic, Controllers are only called

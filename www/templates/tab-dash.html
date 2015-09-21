@@ -1,25 +1,43 @@
-<ion-view view-title="Datos">
+<ion-view view-title="Agregar contacto">
   <ion-content class="padding">
-   <label class="item item-input">
+  
+   
+   
+   <form name="agregarForm" novalidate>
+       <div class="list">
+       
+ <label class="item item-input">
   <span class="input-label">Nombre</span>
-  <input type="text">
-</label>
-<label class="item item-input">
-  <span class="input-label">Apellidos</span>
-  <input type="text">
-</label>
-<label class="item item-input">
-  <span class="input-label">Email</span>
-  <input type="text">
-</label>
-<label class="item item-input">
-  <span class="input-label">Telefono</span>
-  <input type="text">
+  <input type="text" name="nombre" ng-model="persona.nombre" required >
 </label>
 
-<button class="icon-left ion-archive button button-royal" ng-click="showAlert()">
+<label class="item item-input">
+  <span class="input-label"> Apellido</span>
+  <input type="text" name="apellido" ng-model="persona.apellido" required>>
+</label>
+
+<label class="item item-input">
+  <span class="input-label">Email</span>
+  <input type="text" name="email" ng-model="persona.email" required>
+</label>
+
+<label class="item item-input">
+  <span class="input-label">Telefono</span>
+  <input type="tel" name="telefono" ng-model="persona.telefono" required>
+</label>
+</div>
+
+<div class="padding">
+<p ng-show="agregarForm.nombre.$error.required">Escriba el Nombre</p>
+ <p ng-show="agregarForm.apellido.$error.required">Escriba el Apellido</p>   
+<p ng-show="agregarForm.email.$error.required">Escriba el Email</p>
+<p ng-show="agregarForm.telefono.$error.required">Escriba el Telefono</p>
+
+</div>
+<button class="icon-left ion-archive button button-royal" ng-disabled="agregaForm.$invalid" ng-click="guardar(persona)">
   Guardar
 </button>
 
-  </ion-content>
+</form>
+ </ion-content>
 </ion-view>
