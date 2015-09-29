@@ -13,6 +13,21 @@ angular.module('starter.controllers', [])
 
 
 $scope.guardar = function (persona) {
+    
+    $scope.save = function(newMessage) {
+ 
+    $cordovaSQLite.execute(db, 'INSERT INTO agenda (nombre,apellido,telefono,email) VALUES (?,?,?,?)', [persona.nombre,persona.apellido,persona.telefono,persona.email])
+        .then(function(result) {
+            $scope.statusMessage = "Message saved successful, cheers!";
+        }, function(error) {
+            $scope.statusMessage = "Error on saving: " + error.message;
+        })
+ 
+}
+    
+    
+    
+    
     console.log("Nombre:" +persona.nombre);
     console.log("Apellido:" +persona.apellido);
     console.log("Email:" +persona.email);
