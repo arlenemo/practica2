@@ -44,7 +44,24 @@ $scope.guardar = function (persona) {
   //$scope.$on('$ionicView.enter', function(e) {
   //});
 
-  $scope.chats = Chats.all();
+  $scope.chats = [];
+  
+  $cordovaSQLite.execute(db, 'SELECT * FROM agenda ORDER BY id DESC')
+            .then(
+                function(result) {
+ 
+                    if (result.rows.length > 0) {
+ 
+                        $scope.chats = result.rows;
+                        
+                    }
+                },
+                function(error) {
+                    $scope.statusMessage = "Error on loading: " + error.message;
+                }
+            );
+    
+    
   $scope.remove = function(chat) {
     Chats.remove(chat);
   };

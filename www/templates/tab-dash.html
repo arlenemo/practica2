@@ -33,6 +33,7 @@
 <p ng-show="agregarForm.email.$error.required">Escriba el Email</p>
 <p ng-show="agregarForm.telefono.$error.required">Escriba el Telefono</p>
 
+<p>{{ statusMessage}} </p>
 </div>
 <button class="icon-left ion-archive button button-royal" ng-disabled="agregaForm.$invalid" ng-click="guardar(persona)">
   Guardar
