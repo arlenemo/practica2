@@ -1,3 +1,4 @@
+var db;
 // Ionic Starter App
 
 // angular.module is a global place for creating, registering and retrieving Angular modules
@@ -5,9 +6,9 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+angular.module('starter', ['ionic', 'ngCordova','starter.controllers', 'starter.services'])
 
-.run(function($ionicPlatform, $cordovaSQLite) {
+.run(function($ionicPlatform,$cordovaSQLite) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -20,10 +21,13 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       // org.apache.cordova.statusbar required
       StatusBar.styleLightContent();
     }
+     db = $cordovaSQLite.openDB("practica2_agenda.db");
+        $cordovaSQLite.execute(db, 'CREATE TABLE IF NOT EXISTS agenda (id INTEGER PRIMARY KEY AUTOINCREMENT, nombre varchar(255),apellido varchar(255),telefono varchar(255),email varchar(255))');
+ 
+    
   });
   
-  db = $cordovaSQLite.openDB("practica2_agenda.db");
-        $cordovaSQLite.execute(db, 'CREATE TABLE IF NOT EXISTS agenda (id INTEGER PRIMARY KEY AUTOINCREMENT, nombre varchar(255),apellido varchar(255), telefono varchar(255), email varchar(255)');
+  
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
