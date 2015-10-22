@@ -1,9 +1,43 @@
 angular.module('starter.services', [])
 
-.factory('Chats', function() {
+.factory('Chats', function($cordovaSQLite) {
   // Might use a resource here that returns a JSON array
 
   // Some fake testing data
+  var chats = [];
+
+  
+
+  return {
+    all: function() {
+
+      chats = [];
+
+      $cordovaSQLite.execute(db, 'SELECT * FROM agenda ORDER BY id DESC')
+       .then(
+          function(result) {
+             if (result.rows.length > 0) {
+                      for(var i = 0; i < result.rows.length; i++)
+                      { 
+                        chats.push({"nombre":result.rows.item(i).nombre,
+                                    "apellido":result.rows.item(i).apellido,
+                                    "telefono":result.rows.item(i).telefono,
+                                    "email":result.rows.item(i).email});
+                      }
+                    }
+                },
+                function(error) {
+                    statusMessage = "Error on loading: " + error.message;
+                }
+        );
+
+      return chats;
+    }
+
+  };
+
+
+  /*
   var chats = [{
     id: 0,
     name: 'Ben Sparrow',
@@ -46,5 +80,5 @@ angular.module('starter.services', [])
       }
       return null;
     }
-  };
+  };*/
 });
