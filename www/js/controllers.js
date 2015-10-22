@@ -60,9 +60,9 @@ angular.module('starter.controllers', [])
         );
   */
 
-  $scope.getAll = function()
+  $scope.getAll = function() 
   {
-      $scope.chats = Chats.all();
+      $scope.chats = Chats.all(); 
   };
   
   $scope.remove = function(chat) {
