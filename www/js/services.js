@@ -19,7 +19,8 @@ angular.module('starter.services', [])
              if (result.rows.length > 0) {
                       for(var i = 0; i < result.rows.length; i++)
                       { 
-                        chats.push({"nombre":result.rows.item(i).nombre,
+                        chats.push({"id":result.rows.item(i).id,
+                                    "nombre":result.rows.item(i).nombre,
                                     "apellido":result.rows.item(i).apellido,
                                     "telefono":result.rows.item(i).telefono,
                                     "email":result.rows.item(i).email});
@@ -32,6 +33,15 @@ angular.module('starter.services', [])
         );
 
       return chats;
+    },
+    remove: function(chat) {
+      $cordovaSQLite.execute(db, 'DELETE FROM agenda where id = ?',[chat.id])
+      .then(function(result){
+          statusMessage = "Borrado";
+      },
+      function(error){
+          statusMessage = "Error: " + error.message;
+      });
     }
 
   };
@@ -64,7 +74,6 @@ angular.module('starter.services', [])
     lastText: 'This is wicked good ice cream.',
     face: 'https://pbs.twimg.com/profile_images/578237281384841216/R3ae1n61.png'
   }];
-
   return {
     all: function() {
       return chats;
