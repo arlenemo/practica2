@@ -12,7 +12,11 @@ angular.module('starter.services', [])
     all: function() {
 
       chats = [];
+<<<<<<< HEAD
       
+=======
+
+>>>>>>> 9ff53ec134dff4de25336c7e12281ab61b776596
       $cordovaSQLite.execute(db, 'SELECT * FROM agenda ORDER BY id DESC')
        .then(
           function(result) {
@@ -42,6 +46,7 @@ angular.module('starter.services', [])
       function(error){
           statusMessage = "Error: " + error.message;
       });
+<<<<<<< HEAD
     },
     
     get: function(chatId) {
@@ -68,6 +73,11 @@ angular.module('starter.services', [])
   }
  
   
+=======
+    }
+
+  };
+>>>>>>> 9ff53ec134dff4de25336c7e12281ab61b776596
 
 
   /*
@@ -113,4 +123,8 @@ angular.module('starter.services', [])
       return null;
     }
   };*/
+<<<<<<< HEAD
 });
+=======
+});
+>>>>>>> 9ff53ec134dff4de25336c7e12281ab61b776596
