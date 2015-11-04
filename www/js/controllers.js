@@ -60,9 +60,9 @@ angular.module('starter.controllers', [])
         );
   */
 
-  $scope.getAll = function() 
+  $scope.getAll = function()
   {
-      $scope.chats = Chats.all(); 
+      $scope.chats = Chats.all();
   };
   
   $scope.remove = function(chat) {
@@ -71,7 +71,10 @@ angular.module('starter.controllers', [])
 })
 
 .controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
+  //alert($stateParams.chatId);
+  //alert(Chats.get($stateParams.chatId));
   $scope.chat = Chats.get($stateParams.chatId);
+  
 })
 
 .controller('AccountCtrl', function($scope) {
